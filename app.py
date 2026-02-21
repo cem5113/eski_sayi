@@ -7,6 +7,26 @@ from ancient_numbers_simple import (
 
 st.set_page_config(page_title="Eski Sayı Çevirici", layout="centered")
 
+# ✅ Sonucu büyütmek için CSS
+st.markdown("""
+<style>
+.big-result {
+  font-size: 44px !important;
+  line-height: 1.25;
+  padding: 10px 0;
+}
+.big-result-egypt {
+  font-size: 56px !important;
+  line-height: 1.25;
+  padding: 10px 0;
+}
+.big-result-code pre {
+  font-size: 34px !important;
+  line-height: 1.25;
+}
+</style>
+""", unsafe_allow_html=True)
+
 CIVS = {
     "Sümerler": {
         "warn": "⚠ 60’lık sistem (0–59 arası gruplar). Sonuç: 27;35 gibi yazılır.",
@@ -109,7 +129,7 @@ if st.session_state.page == "home":
             if st.button(name, use_container_width=True):
                 go_convert(name)
 
-    st.caption("Not: Bu uygulama 6. sınıf seviyesinde, eğlenceli ve basit anlatım içindir.")
+    st.caption("Not: Bu uygulama Ela EROĞLU tarafından Matematik Proje ödevi kapsamında hazırlanan eğlenceli Eski Sayı Sistemlerini Çevirici Uygulamasıdır.")
 
 # ---------------- CONVERT ----------------
 else:
@@ -137,10 +157,21 @@ else:
         try:
             result = info["convert"](int(n))
             st.subheader("Sonuç")
+
+            # Maya gibi çok satırlı ise code bloğunu büyüt
             if info["format"] == "code":
+                st.markdown("<div class='big-result-code'>", unsafe_allow_html=True)
                 st.code(result, language="text")
+                st.markdown("</div>", unsafe_allow_html=True)
+
+            # Diğerleri tek satır: büyük font
             else:
-                st.success(result)
+                # Mısır daha da büyük
+                if civ == "Mısırlılar":
+                    st.markdown(f"<div class='big-result-egypt'>{result}</div>", unsafe_allow_html=True)
+                else:
+                    st.markdown(f"<div class='big-result'>{result}</div>", unsafe_allow_html=True)
+
         except Exception as e:
             st.error(str(e))
 
