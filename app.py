@@ -41,10 +41,12 @@ CIVS = {
         "warn": "⚠ 60’lık pozisyonel sistem kullanılır.",
         "symbols": "Sayılar 0–59 arası bloklara ayrılır. Her blok 60’ın kuvvetini temsil eder.",
         "hint": "Örn: 125 → 𒌋𒌋   𒐕𒐕𒐕𒐕𒐕",
-        "min": 0, "max": 10**6,
+        "min": 0,
+        "max": 10**6,
         "convert": lambda n: to_babylonian(n),
-        "format": "text"
+        "format": "code"   
     },
+    
     "Mısırlılar": {
         "warn": "⚠ Toplama gibi: 1000 işaretinden 1 tane, 100 işaretinden 6 tane…",
         "symbols": "1, 10, 100, 1000… için ayrı işaretler vardır ve yan yana tekrar eder.",
