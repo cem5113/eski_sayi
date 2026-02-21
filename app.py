@@ -11,33 +11,18 @@ st.set_page_config(page_title="Eski Sayı Çevirici", layout="centered")
 st.markdown("""
 <style>
 
-/* Tüm sayfa arka planı */
-.stApp {
-    background-color: #FFF9C4;  /* Yumuşak açık sarı */
+/* Sadece "Ana sayfaya dön" butonunu hedefliyoruz */
+div[data-testid="stHorizontalBlock"] div.stButton > button {
+    background-color: #D32F2F !important;
+    color: white !important;
+    font-weight: 800 !important;
+    border-radius: 10px;
 }
 
-/* Ana sayfa kart alanı gibi görünmesi için içerik çerçevesi */
-.block-container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
-
-/* Büyük sonuç yazısı */
-.big-result {
-  font-size: 44px !important;
-  line-height: 1.25;
-  padding: 10px 0;
-}
-
-.big-result-egypt {
-  font-size: 56px !important;
-  line-height: 1.25;
-  padding: 10px 0;
-}
-
-.big-result-code pre {
-  font-size: 34px !important;
-  line-height: 1.25;
+/* Hover efekti */
+div[data-testid="stHorizontalBlock"] div.stButton > button:hover {
+    background-color: #B71C1C !important;
+    color: white !important;
 }
 
 </style>
@@ -193,8 +178,10 @@ else:
 
     st.divider()
     colA, colB = st.columns(2)
+    
     with colA:
         if st.button("⬅ Ana sayfaya dön", use_container_width=True):
             go_home()
+    
     with colB:
         st.caption("İpucu: Başka uygarlık seçmek için ana sayfaya dön.")
