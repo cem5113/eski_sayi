@@ -129,7 +129,7 @@ if st.session_state.page == "home":
             if st.button(name, use_container_width=True):
                 go_convert(name)
 
-    st.caption("Not: Bu uygulama Ela EROĞLU tarafından Matematik Proje ödevi için tasarlanan eğlenceli bir "Eski Sayı Sistemleri Çevirici" uygulamasıdır.")
+    st.caption('Not: Bu uygulama Ela EROĞLU tarafından Matematik Proje ödevi için tasarlanan eğlenceli bir "Eski Sayı Sistemleri Çevirici" uygulamasıdır.')
 
 # ---------------- CONVERT ----------------
 else:
