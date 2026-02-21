@@ -29,18 +29,19 @@ st.markdown("""
 
 CIVS = {
     "Sümerler": {
-        "warn": "⚠ 60’lık sistem (0–59 arası gruplar). Sonuç: 27;35 gibi yazılır.",
-        "symbols": "Sayılar 60’lık gruplarla yazılır (dakika-saniye gibi düşünebilirsin).",
-        "hint": "Örn: 1655 → 27;35",
-        "min": 0, "max": 10**9,
+        "warn": "⚠ 60 tabanlı bir sistemdir ancak modern basamaklı yapı tam gelişmemiştir.",
+        "symbols": "Sayılar kama işaretlerinin tekrar edilmesiyle yazılır. (𒐕 = 1, 𒌋 = 10, 𒐖 = 60 grubu)",
+        "hint": "Örn: 73 → 𒐖 𒌋 𒐕 𒐕 𒐕",
+        "min": 0, "max": 10**6,
         "convert": lambda n: to_sumerian(n),
         "format": "text"
     },
+
     "Babil": {
-        "warn": "⚠ 60’lık sistem (Sümerlere benzer).",
-        "symbols": "Sayılar 60’lık gruplarla yazılır.",
-        "hint": "Örn: 1655 → 27;35",
-        "min": 0, "max": 10**9,
+        "warn": "⚠ 60’lık pozisyonel sistem kullanılır.",
+        "symbols": "Sayılar 0–59 arası bloklara ayrılır. Her blok 60’ın kuvvetini temsil eder.",
+        "hint": "Örn: 125 → 𒌋𒌋   𒐕𒐕𒐕𒐕𒐕",
+        "min": 0, "max": 10**6,
         "convert": lambda n: to_babylonian(n),
         "format": "text"
     },
