@@ -10,20 +10,36 @@ st.set_page_config(page_title="Eski Sayı Çevirici", layout="centered")
 # ✅ Sonucu büyütmek için CSS
 st.markdown("""
 <style>
+
+/* Tüm sayfa arka planı */
+.stApp {
+    background-color: #FFF9C4;  /* Yumuşak açık sarı */
+}
+
+/* Ana sayfa kart alanı gibi görünmesi için içerik çerçevesi */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* Büyük sonuç yazısı */
 .big-result {
   font-size: 44px !important;
   line-height: 1.25;
   padding: 10px 0;
 }
+
 .big-result-egypt {
   font-size: 56px !important;
   line-height: 1.25;
   padding: 10px 0;
 }
+
 .big-result-code pre {
   font-size: 34px !important;
   line-height: 1.25;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
