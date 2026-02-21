@@ -10,21 +10,20 @@ st.set_page_config(page_title="Eski Sayı Çevirici", layout="centered")
 # ✅ Sonucu büyütmek için CSS
 st.markdown("""
 <style>
-
-/* Sadece "Ana sayfaya dön" butonunu hedefliyoruz */
-div[data-testid="stHorizontalBlock"] div.stButton > button {
-    background-color: #D32F2F !important;
-    color: white !important;
-    font-weight: 800 !important;
-    border-radius: 10px;
+.big-result {
+  font-size: 44px !important;
+  line-height: 1.25;
+  padding: 10px 0;
 }
-
-/* Hover efekti */
-div[data-testid="stHorizontalBlock"] div.stButton > button:hover {
-    background-color: #B71C1C !important;
-    color: white !important;
+.big-result-egypt {
+  font-size: 56px !important;
+  line-height: 1.25;
+  padding: 10px 0;
 }
-
+.big-result-code pre {
+  font-size: 34px !important;
+  line-height: 1.25;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -130,7 +129,7 @@ if st.session_state.page == "home":
             if st.button(name, use_container_width=True):
                 go_convert(name)
 
-    st.caption("Not: Bu uygulama Ela EROĞLU tarafından Matematik Proje ödevi kapsamında hazırlanan eğlenceli Eski Sayı Sistemlerini Çevirici Uygulamasıdır.")
+    st.caption("Not: Bu uygulama 6. sınıf seviyesinde, eğlenceli ve basit anlatım içindir.")
 
 # ---------------- CONVERT ----------------
 else:
@@ -178,10 +177,8 @@ else:
 
     st.divider()
     colA, colB = st.columns(2)
-    
     with colA:
         if st.button("⬅ Ana sayfaya dön", use_container_width=True):
             go_home()
-    
     with colB:
         st.caption("İpucu: Başka uygarlık seçmek için ana sayfaya dön.")
