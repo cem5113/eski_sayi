@@ -96,10 +96,11 @@ CIVS = {
         "format": "code"  # multi-line
     },
     "Aztekler": {
-        "warn": "⚠ Toplamalı gösterim: • (1), ⚑ (20), 🪶 (400), 🎒 (8000).",
-        "symbols": "İşaretler tekrar ederek sayı oluşturur.",
-        "hint": "Örn: 1655 → 🪶🪶🪶🪶  ⚑⚑⚑  •••••",
-        "min": 0, "max": 10**9,
+        "warn": "⚠ 20’lik (vigésimal) toplamalı sistem kullanılır.",
+        "symbols": "Temel işaretler (temsili gösterim): • = 1, ⚑ = 20 (Pantli), 🪶 = 400 (Tzontli), 🧺 = 8000 (Xiquipilli).",
+        "hint": "Örn: 1655 → 🪶🪶🪶🪶  ⚑⚑  •••••••••••••••",
+        "min": 0,
+        "max": 10**9,
         "convert": lambda n: to_aztec(n),
         "format": "text"
     },
