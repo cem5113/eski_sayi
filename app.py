@@ -1,7 +1,7 @@
 # app.py
 import streamlit as st
 from ancient_numbers_simple import (
-    to_roman, to_greek, to_sexagesimal, to_egyptian,
+    to_roman, to_greek, to_sumerian, to_babylonian, to_egyptian,
     to_devanagari, to_chinese, to_maya, to_aztec
 )
 
@@ -33,7 +33,7 @@ CIVS = {
         "symbols": "Sayılar 60’lık gruplarla yazılır (dakika-saniye gibi düşünebilirsin).",
         "hint": "Örn: 1655 → 27;35",
         "min": 0, "max": 10**9,
-        "convert": lambda n: to_sexagesimal(n),
+        "convert": lambda n: to_sumerian(n),
         "format": "text"
     },
     "Babil": {
@@ -41,7 +41,7 @@ CIVS = {
         "symbols": "Sayılar 60’lık gruplarla yazılır.",
         "hint": "Örn: 1655 → 27;35",
         "min": 0, "max": 10**9,
-        "convert": lambda n: to_sexagesimal(n),
+        "convert": lambda n: to_babylonian(n),
         "format": "text"
     },
     "Mısırlılar": {
