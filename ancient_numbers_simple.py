@@ -43,7 +43,9 @@ def to_greek(n: int) -> str:
     return "".join(parts) + _KERAIA
 
 # --- Base conversion helpers ---
-def _to_base(n: int, base: int) -> list[int]:
+from typing import List
+
+def _to_base(n: int, base: int) -> List[int]:
     if n < 0:
         raise ValueError("Negatif sayı yok 🙂")
     if n == 0:
@@ -55,11 +57,49 @@ def _to_base(n: int, base: int) -> list[int]:
         d.append(r)
     return list(reversed(d))
 
-# --- Sumer/Babylon (base-60) ---
-def to_sexagesimal(n: int) -> str:
-    # compact like 27;35
-    d = _to_base(n, 60)
-    return ";".join(str(x) for x in d)
+_SUMER = [
+    (60, "𒐖 "),   # 60 grubu
+    (10, "𒌋 "),
+    (1,  "𒐕 "),
+]
+
+def to_sumerian(n: int) -> str:
+    if n < 0:
+        raise ValueError("Negatif sayı yok 🙂")
+    if n == 0:
+        return "Sümer sisteminde sıfır yoktu"
+
+    out = []
+    x = n
+    for v, sym in _SUMER:
+        k, x = divmod(x, v)
+        if k:
+            out.append(sym * k)
+    return "".join(out)
+
+def to_babylonian(n: int) -> str:
+    if n < 0:
+        raise ValueError("Negatif sayı yok 🙂")
+    if n == 0:
+        return "𒐀"  # yer tutucu benzeri
+
+    digits = []
+    x = n
+
+    while x:
+        digits.append(x % 60)
+        x //= 60
+
+    digits = digits[::-1]
+
+    blocks = []
+    for d in digits:
+        tens = d // 10
+        ones = d % 10
+        block = "𒌋 " * tens + "𒐕 " * ones
+        blocks.append(block.strip())
+
+    return "   ".join(blocks)
 
 # --- Egyptian (hieroglyphic logic) additive ---
 _EGY = [
